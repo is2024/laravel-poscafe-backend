@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add User')
+@section('title', 'User Forms')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -16,7 +16,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Form User</h1>
+                <h1>User Forms</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
@@ -30,7 +30,7 @@
 
 
                 <div class="card">
-                    <form action="{{ route('users.store') }}" method="POST">
+                    <form action="{{ route('user.store') }}" method="POST">
                         @csrf
                         <div class="card-header">
                             <h4>Input Text</h4>
@@ -82,21 +82,24 @@
                                     </div>
                                 @enderror
                             </div>
-
                             <div class="form-group">
-                                <label class="form-label">Role</label>
+                                <label>Phone</label>
+                                <input type="number" class="form-control" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="admin" class="selectgroup-input"
+                                        <input type="radio" name="roles" value="ADMIN" class="selectgroup-input"
                                             checked="">
                                         <span class="selectgroup-button">Admin</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="staff" class="selectgroup-input">
+                                        <input type="radio" name="roles" value="STAFF" class="selectgroup-input">
                                         <span class="selectgroup-button">Staff</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="user" class="selectgroup-input">
+                                        <input type="radio" name="roles" value="USER" class="selectgroup-input">
                                         <span class="selectgroup-button">User</span>
                                     </label>
 

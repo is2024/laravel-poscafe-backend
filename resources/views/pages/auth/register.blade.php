@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Register Onlineshop')
+@section('title', 'Register POS-Cafe')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -29,9 +29,7 @@
                         </div>
                     @enderror
                 </div>
-
-
-
+                
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email"

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Products')
+@section('title', 'Product')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Product</h1>
+                <h1>Products</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('products.create') }}" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('product.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Products</a></div>
-                    <div class="breadcrumb-item">All Products</div>
+                    <div class="breadcrumb-item"><a href="#">Product</a></div>
+                    <div class="breadcrumb-item">All Product</div>
                 </div>
             </div>
             <div class="section-body">
@@ -27,18 +27,14 @@
                         @include('layouts.alert')
                     </div>
                 </div>
-
-
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>All Posts</h4>
-                            </div>
+
                             <div class="card-body">
 
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('products.index') }}">
+                                    <form method="GET" action="{{ route('product.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="name">
                                             <div class="input-group-append">
@@ -57,34 +53,44 @@
                                             <th>Name</th>
                                             <th>Category</th>
                                             <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Create At</th>
+                                            <th>Stock</th>
+                                            <th>Photo</th>
+                                            <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($products as $product)
                                             <tr>
 
-                                                <td>{{ $product->name }}
+                                             <td>{{ $product->name }}
                                                 </td>
+                                                <td>{{ $product->category }}
+                                                </td>
+                                                <td>   {{ sprintf('Rp. %s', number_format($product->price)) }}
+                                                </td>
+                                                <td>{{ $product->stock }}
+                                                </td>
+
                                                 <td>
-                                                    {{ $product->category_name }}
+                                                    @if ($product->image)
+                                                        <img src="{{ asset('storage/products/'.$product->image) }}" alt=""
+                                                            width="100px" class="img-thumbnail">
+                                                            @else
+                                                            <span class="badge badge-danger">No Image</span>
+
+                                                    @endif
+
                                                 </td>
-                                                <td>
-                                                    {{ $product->price }}
-                                                </td>
-                                                <td>
-                                                    {{ $product->status == 1 ? 'Active' : 'Inactive' }}
-                                                </td>
+
                                                 <td>{{ $product->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('products.edit', $product->id) }}'
+                                                        <a href='{{ route('product.edit', $product->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('products.destroy', $product->id) }}"
+                                                        <form action="{{ route('product.destroy', $product->id) }}"
                                                             method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"

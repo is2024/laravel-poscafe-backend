@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Login POS-Cafe')
+@section('title', 'Login Admin POS-Cafe')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -21,7 +21,7 @@
                     <input id="email" type="email"
                         class="form-control @error('email')
                         is-invalid
-                        @enderror"
+                    @enderror"
                         name="email" tabindex="1" autofocus>
                     @error('email')
                         <div class="invalid-feedback">
@@ -47,16 +47,12 @@
                         @enderror
 
                     </div>
-
-
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                             Login
                         </button>
                     </div>
             </form>
-
-
         </div>
     </div>
     <div class="text-muted mt-5 text-center">
