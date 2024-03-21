@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'POS CaFe',
             'email' => 'cafe@gmail.com',
             'password' => Hash::make('12345678'),
+            'role' => 'admin',
         ]);
 
 
